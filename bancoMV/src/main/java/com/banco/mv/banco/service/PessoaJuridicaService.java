@@ -1,8 +1,8 @@
 package com.banco.mv.banco.service;
 
 import com.banco.mv.banco.exception.ClientNotFoundException;
+import com.banco.mv.banco.model.Dto.PessoaFisicaDTO;
 import com.banco.mv.banco.model.Dto.PessoaJuridicaDTO;
-import com.banco.mv.banco.model.PessoaFisica;
 import com.banco.mv.banco.model.PessoaJuridica;
 import com.banco.mv.banco.repository.PessoaJuridicaRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +33,10 @@ public class PessoaJuridicaService {
         findById(id);
         PessoaJuridicaDTO.id = id;
         return pessoaJuridicaRepository.save(PessoaJuridicaDTO.toEntity()).toDto();
+    }
+
+    public PessoaJuridicaDTO save(PessoaJuridicaDTO pessoaJuridicaDTO) {
+        return pessoaJuridicaRepository.save(pessoaJuridicaDTO.toEntity()).toDto();
     }
 
     public void deleteById(Long id) {

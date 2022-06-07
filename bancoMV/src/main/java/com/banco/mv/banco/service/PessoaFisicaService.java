@@ -6,9 +6,7 @@ import com.banco.mv.banco.model.PessoaFisica;
 import com.banco.mv.banco.repository.PessoaFisicaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,5 +37,9 @@ public class PessoaFisicaService {
     public void deleteById(Long id) {
         findById(id);
         pessoaFisicaRepository.deleteById(id);
+    }
+
+    public PessoaFisicaDTO save(PessoaFisicaDTO pessoaFisicaDTO) {
+        return pessoaFisicaRepository.save(pessoaFisicaDTO.toEntity()).toDto();
     }
 }

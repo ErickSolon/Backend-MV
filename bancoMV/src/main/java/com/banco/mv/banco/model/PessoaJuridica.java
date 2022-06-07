@@ -1,6 +1,5 @@
 package com.banco.mv.banco.model;
 
-import com.banco.mv.banco.model.Dto.PessoaFisicaDTO;
 import com.banco.mv.banco.model.Dto.PessoaJuridicaDTO;
 import lombok.*;
 

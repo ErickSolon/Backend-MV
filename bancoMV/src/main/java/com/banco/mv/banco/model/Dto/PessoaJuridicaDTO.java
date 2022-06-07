@@ -1,13 +1,11 @@
 package com.banco.mv.banco.model.Dto;
 
-import com.banco.mv.banco.model.PessoaFisica;
 import com.banco.mv.banco.model.PessoaJuridica;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CNPJ;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 @Builder

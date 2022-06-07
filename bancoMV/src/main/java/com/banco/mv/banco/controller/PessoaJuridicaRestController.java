@@ -1,8 +1,9 @@
 package com.banco.mv.banco.controller;
 
+import com.banco.mv.banco.model.Dto.PessoaFisicaDTO;
 import com.banco.mv.banco.model.Dto.PessoaJuridicaDTO;
+import com.banco.mv.banco.model.PessoaJuridica;
 import com.banco.mv.banco.service.PessoaJuridicaService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ import java.util.List;
 public class PessoaJuridicaRestController {
     private final PessoaJuridicaService pessoaJuridicaService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<PessoaJuridicaDTO>> getPessoaJuridica() {
         List<PessoaJuridicaDTO> PessoaJuridicaDTOList = pessoaJuridicaService.findAll();
         return ResponseEntity.ok(PessoaJuridicaDTOList);
@@ -29,6 +30,11 @@ public class PessoaJuridicaRestController {
     @PutMapping("/update/{id}")
     public ResponseEntity<PessoaJuridicaDTO> updatePessoaFisicaById(@PathVariable Long id, @RequestBody PessoaJuridicaDTO PessoaJuridicaDTO) {
         return ResponseEntity.ok(pessoaJuridicaService.updateById(id, PessoaJuridicaDTO));
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<PessoaJuridicaDTO> createPessoaJuridica(@RequestBody PessoaJuridicaDTO pessoaJuridicaDTO) {
+        return ResponseEntity.ok(pessoaJuridicaService.save(pessoaJuridicaDTO));
     }
 
     @DeleteMapping("/delete/{id}")

@@ -1,21 +1,19 @@
 package com.banco.mv.banco.controller;
 
 import com.banco.mv.banco.model.Dto.PessoaFisicaDTO;
-import com.banco.mv.banco.model.PessoaFisica;
 import com.banco.mv.banco.service.PessoaFisicaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/v1/pessoafisica")
 @RequiredArgsConstructor
 public class PessoaFisicaRestController {
     private final PessoaFisicaService pessoaFisicaService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<PessoaFisicaDTO>> getPessoaFisica() {
         List<PessoaFisicaDTO> pessoaFisicaDTOList = pessoaFisicaService.findAll();
         return ResponseEntity.ok(pessoaFisicaDTOList);
@@ -31,9 +29,13 @@ public class PessoaFisicaRestController {
         return ResponseEntity.ok(pessoaFisicaService.updateById(id, pessoaFisicaDTO));
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<PessoaFisicaDTO> createPessoaFisica(@RequestBody PessoaFisicaDTO pessoaFisicaDTO) {
+        return ResponseEntity.ok(pessoaFisicaService.save(pessoaFisicaDTO));
+    }
+
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id) {
         pessoaFisicaService.deleteById(id);
     }
-
 }
